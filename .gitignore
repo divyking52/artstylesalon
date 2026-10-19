@@ -1,0 +1,9 @@
+.vercel
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+assets/media-api.json
+assets/websites.json
+assets/_apply_media.py

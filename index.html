@@ -1,0 +1,2654 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Art Style Salon, Faridabad — premium hair, beauty, and personal styling." />
+  <title>Art Style Salon — Faridabad</title>
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <style>
+    :root {
+      --ivory: #f7f2eb;
+      --ivory-deep: #efe6db;
+      --burgundy: #6b1e2e;
+      --burgundy-deep: #4a1220;
+      --black: #0e0c0b;
+      --charcoal: #1a1715;
+      --gold: #c4a574;
+      --gold-soft: #d4bc94;
+      --blush: #e8d0c8;
+      --blush-soft: #f3e6e1;
+      --text: #1a1412;
+      --text-muted: #5c534e;
+      --white: #fffcf9;
+      --font-display: "Cormorant Garamond", Georgia, serif;
+      --font-body: "Outfit", sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --nav-h: 4.5rem;
+      --cursor-size: 12px;
+      --cursor-ring: 36px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--text);
+      background: var(--ivory);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    body.is-touch { cursor: auto; }
+    body.is-touch * { cursor: auto !important; }
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    ul { list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.05; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--cursor-size);
+      height: var(--cursor-size);
+      background: var(--burgundy);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.3s, mix-blend-mode 0.3s;
+      mix-blend-mode: difference;
+      will-change: transform;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--cursor-ring);
+      height: var(--cursor-ring);
+      border: 1px solid rgba(107, 30, 46, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.35s var(--ease-out), height 0.35s var(--ease-out), border-color 0.3s, opacity 0.3s;
+      will-change: transform;
+    }
+
+    .cursor.is-hover,
+    .cursor-ring.is-hover {
+      width: 52px;
+      height: 52px;
+    }
+
+    .cursor.is-hover {
+      background: var(--gold);
+      mix-blend-mode: normal;
+      opacity: 0.85;
+    }
+
+    .cursor-ring.is-hover {
+      border-color: var(--gold);
+      opacity: 0.5;
+      width: 72px;
+      height: 72px;
+    }
+
+    body.is-touch .cursor,
+    body.is-touch .cursor-ring { display: none; }
+
+    /* Nav */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+      transition: background 0.4s, backdrop-filter 0.4s, color 0.4s;
+      color: var(--white);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(247, 242, 235, 0.92);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      box-shadow: 0 1px 0 rgba(14, 12, 11, 0.06);
+    }
+
+    .site-header__inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1.25rem, 2.5vw, 2.25rem);
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 400;
+      opacity: 0.85;
+      transition: opacity 0.25s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.35s var(--ease-out);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      opacity: 1;
+      outline: none;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after { width: 100%; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.35rem;
+      border: 1px solid currentColor;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .site-header.is-scrolled .nav-cta:hover,
+    .site-header.is-scrolled .nav-cta:focus-visible {
+      background: var(--burgundy);
+      border-color: var(--burgundy);
+      color: var(--white);
+    }
+
+    .site-header:not(.is-scrolled) .nav-cta:hover,
+    .site-header:not(.is-scrolled) .nav-cta:focus-visible {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 0;
+      background: transparent;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: none;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      transform-origin: center center;
+      will-change: transform, clip-path;
+    }
+
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.18);
+      will-change: transform;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(14, 12, 11, 0.72) 0%, rgba(14, 12, 11, 0.35) 48%, rgba(74, 18, 32, 0.45) 100%),
+        linear-gradient(to top, rgba(14, 12, 11, 0.55) 0%, transparent 42%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: calc(var(--nav-h) + 2rem) clamp(1.25rem, 5vw, 4.5rem) clamp(3rem, 8vh, 5.5rem);
+      max-width: 1200px;
+    }
+
+    .hero__brand {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.4vw, 1rem);
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .hero__title {
+      font-size: clamp(3.2rem, 9vw, 7.5rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__title .word {
+      display: inline-block;
+      overflow: hidden;
+      margin-right: 0.18em;
+      vertical-align: top;
+    }
+
+    .hero__title .word > span {
+      display: inline-block;
+      transform: translateY(110%);
+    }
+
+    .hero__sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.125rem);
+      max-width: 34ch;
+      opacity: 0.88;
+      font-weight: 300;
+      margin-bottom: 2.25rem;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.75rem;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem 1.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.35s;
+      cursor: none;
+    }
+
+    .btn--primary {
+      background: var(--burgundy);
+      color: var(--white);
+      border-color: var(--burgundy);
+    }
+
+    .btn--primary:hover,
+    .btn--primary:focus-visible {
+      background: var(--burgundy-deep);
+      border-color: var(--burgundy-deep);
+      outline: none;
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 252, 249, 0.45);
+    }
+
+    .btn--ghost:hover,
+    .btn--ghost:focus-visible {
+      border-color: var(--white);
+      background: rgba(255, 252, 249, 0.08);
+      outline: none;
+    }
+
+    .btn--gold {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .btn--gold:hover,
+    .btn--gold:focus-visible {
+      background: var(--gold-soft);
+      outline: none;
+    }
+
+    .btn--outline-dark {
+      background: transparent;
+      color: var(--text);
+      border-color: rgba(26, 20, 18, 0.35);
+    }
+
+    .btn--outline-dark:hover,
+    .btn--outline-dark:focus-visible {
+      border-color: var(--burgundy);
+      color: var(--burgundy);
+      outline: none;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      right: clamp(1.25rem, 4vw, 3rem);
+      bottom: clamp(2rem, 6vh, 4rem);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 252, 249, 0.7);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .scroll-indicator__line {
+      width: 1px;
+      height: 72px;
+      background: rgba(255, 252, 249, 0.25);
+      position: relative;
+      overflow: hidden;
+      writing-mode: horizontal-tb;
+      transform: rotate(180deg);
+    }
+
+    .scroll-indicator__line::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateY(-100%);
+      animation: scrollLine 2.2s var(--ease-out) infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: translateY(-100%); }
+      50% { transform: translateY(0); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Sections common */
+    .section {
+      position: relative;
+      padding: clamp(4.5rem, 10vh, 8rem) clamp(1.25rem, 5vw, 4.5rem);
+    }
+
+    .section__label {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 1rem;
+    }
+
+    .section__title {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      margin-bottom: 1.25rem;
+      max-width: 14ch;
+    }
+
+    .section__lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Brand story pin */
+    .story {
+      background: var(--ivory);
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .story__pin {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 100vh;
+      align-items: stretch;
+    }
+
+    .story__visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .story__visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 100vh;
+    }
+
+    .story__frame {
+      position: absolute;
+      inset: 8%;
+      border: 1px solid rgba(196, 165, 116, 0.45);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .story__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem);
+      background: var(--ivory-deep);
+      position: relative;
+    }
+
+    .story__statements {
+      position: relative;
+      min-height: 10rem;
+    }
+
+    .story__statement {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(28px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), visibility 0.6s;
+    }
+
+    .story__statement.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    .story__statement h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      margin-bottom: 1rem;
+      color: var(--burgundy-deep);
+    }
+
+    .story__statement p {
+      color: var(--text-muted);
+      max-width: 34ch;
+      font-size: 1.05rem;
+    }
+
+    .story__progress {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .story__dot {
+      width: 28px;
+      height: 2px;
+      background: rgba(107, 30, 46, 0.2);
+      border: 0;
+      padding: 0;
+      cursor: none;
+      transition: background 0.3s, width 0.3s;
+    }
+
+    .story__dot.is-active {
+      background: var(--burgundy);
+      width: 48px;
+    }
+
+    /* Marquee typography */
+    .type-marquee {
+      overflow: hidden;
+      padding: clamp(2rem, 5vh, 3.5rem) 0;
+      background: var(--burgundy-deep);
+      color: var(--blush-soft);
+      border-top: 1px solid rgba(196, 165, 116, 0.25);
+      border-bottom: 1px solid rgba(196, 165, 116, 0.25);
+    }
+
+    .type-marquee__track {
+      display: flex;
+      width: max-content;
+      gap: 3rem;
+      will-change: transform;
+    }
+
+    .type-marquee__item {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .type-marquee__item span {
+      color: var(--gold);
+      font-style: normal;
+      margin: 0 1.5rem;
+    }
+
+    /* Services */
+    .services {
+      background: var(--ivory);
+      overflow: hidden;
+    }
+
+    .services__head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .services__controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .carousel-btn {
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid rgba(26, 20, 18, 0.25);
+      background: transparent;
+      display: grid;
+      place-items: center;
+      cursor: none;
+      transition: border-color 0.3s, background 0.3s, color 0.3s;
+      color: var(--text);
+    }
+
+    .carousel-btn:hover,
+    .carousel-btn:focus-visible {
+      border-color: var(--burgundy);
+      color: var(--burgundy);
+      outline: none;
+    }
+
+    .carousel-btn:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .services__viewport {
+      overflow: hidden;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+
+    .services__viewport.is-dragging { cursor: grabbing; }
+
+    .services__track {
+      display: flex;
+      gap: 1.5rem;
+      will-change: transform;
+      user-select: none;
+    }
+
+    .service-card {
+      flex: 0 0 min(78vw, 380px);
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+      color: var(--white);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .service-card__media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .service-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.1s var(--ease-out);
+      transform: scale(1.05);
+    }
+
+    .service-card__shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14, 12, 11, 0.92) 0%, rgba(14, 12, 11, 0.35) 55%, rgba(14, 12, 11, 0.15) 100%);
+      z-index: 1;
+    }
+
+    .service-card__body {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1.75rem 1.75rem;
+      transform: translateY(0);
+      transition: transform 0.5s var(--ease-out);
+    }
+
+    .service-card__accent {
+      position: absolute;
+      left: 1.75rem;
+      top: 1.75rem;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      z-index: 2;
+      transition: width 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+
+    .service-card h3 {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      margin-bottom: 0.65rem;
+      transition: letter-spacing 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+    }
+
+    .service-card__desc {
+      font-size: 0.92rem;
+      opacity: 0.82;
+      margin-bottom: 1rem;
+      max-width: 28ch;
+    }
+
+    .service-card__more {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s var(--ease-out), opacity 0.4s, margin 0.4s;
+      font-size: 0.85rem;
+      color: var(--blush);
+      margin-bottom: 0;
+    }
+
+    .service-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      transition: border-color 0.3s, color 0.3s;
+    }
+
+    .service-card__link:hover,
+    .service-card__link:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      outline: none;
+    }
+
+    .service-card:hover .service-card__media img,
+    .service-card:focus-within .service-card__media img {
+      transform: scale(1.14);
+    }
+
+    .service-card:hover .service-card__accent,
+    .service-card:focus-within .service-card__accent {
+      width: 64px;
+      transform: translateX(8px);
+    }
+
+    .service-card:hover h3,
+    .service-card:focus-within h3 {
+      letter-spacing: 0.02em;
+      transform: translateX(4px);
+    }
+
+    .service-card:hover .service-card__more,
+    .service-card:focus-within .service-card__more {
+      max-height: 6rem;
+      opacity: 1;
+      margin-bottom: 1.15rem;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--blush-soft);
+    }
+
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(0.75rem, 2vw, 1.5rem);
+      margin-top: 2rem;
+    }
+
+    .gallery__item {
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1.1s var(--ease-out);
+    }
+
+    .gallery__item.is-revealed {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .gallery__item:nth-child(1) {
+      grid-row: span 2;
+      min-height: 620px;
+      clip-path: inset(0 100% 0 0);
+    }
+    .gallery__item:nth-child(1).is-revealed { clip-path: inset(0 0 0 0); }
+
+    .gallery__item:nth-child(2) { min-height: 300px; clip-path: inset(0 0 100% 0); }
+    .gallery__item:nth-child(2).is-revealed { clip-path: inset(0 0 0 0); }
+
+    .gallery__item:nth-child(3) {
+      grid-row: span 2;
+      min-height: 620px;
+      clip-path: inset(0 0 0 100%);
+    }
+    .gallery__item:nth-child(3).is-revealed { clip-path: inset(0 0 0 0); }
+
+    .gallery__item:nth-child(4) { min-height: 300px; }
+
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.2s var(--ease-out);
+      min-height: inherit;
+    }
+
+    .gallery__item:hover img,
+    .gallery__item:focus-within img {
+      transform: scale(1.08);
+    }
+
+    .gallery__caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(14, 12, 11, 0.75), transparent);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s, transform 0.4s var(--ease-out);
+    }
+
+    .gallery__item:hover .gallery__caption,
+    .gallery__item:focus-within .gallery__caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery__cta {
+      margin-top: 2.75rem;
+      text-align: center;
+    }
+
+    /* Experience */
+    .experience {
+      padding: 0;
+      background: var(--ivory);
+    }
+
+    .experience__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+    }
+
+    .experience__media {
+      position: relative;
+      overflow: hidden;
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 1.3s var(--ease-out);
+    }
+
+    .experience__media.is-revealed {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .experience__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 90vh;
+      transform: scale(1.08);
+      transition: transform 1.6s var(--ease-out);
+    }
+
+    .experience__media.is-revealed img {
+      transform: scale(1);
+    }
+
+    .experience__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 7vw, 6rem);
+      background: linear-gradient(160deg, var(--ivory) 0%, var(--blush-soft) 100%);
+    }
+
+    .experience__copy h2 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease-out) 0.2s, transform 0.8s var(--ease-out) 0.2s;
+    }
+
+    .experience__copy.is-revealed h2 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .experience__copy p {
+      color: var(--text-muted);
+      max-width: 38ch;
+      margin-bottom: 1.15rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    .experience__copy.is-revealed p:nth-of-type(1) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.35s;
+    }
+
+    .experience__copy.is-revealed p:nth-of-type(2) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.5s;
+    }
+
+    .experience__list {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.85rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.65s, transform 0.8s var(--ease-out) 0.65s;
+    }
+
+    .experience__copy.is-revealed .experience__list {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .experience__list li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: 0.95rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(107, 30, 46, 0.15);
+    }
+
+    .experience__list li span {
+      font-family: var(--font-display);
+      color: var(--burgundy);
+      font-size: 1.1rem;
+      min-width: 1.5rem;
+    }
+
+    /* Booking */
+    .booking {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .booking__wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .booking .section__label { color: var(--gold); }
+    .booking .section__lead { color: rgba(255, 252, 249, 0.7); }
+
+    .booking__note {
+      font-size: 0.85rem;
+      color: rgba(255, 252, 249, 0.55);
+      margin-top: 1.5rem;
+      max-width: 36ch;
+    }
+
+    .booking__contact {
+      margin-top: 2rem;
+      display: grid;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: rgba(255, 252, 249, 0.75);
+    }
+
+    .booking__contact strong {
+      color: var(--gold-soft);
+      font-weight: 400;
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .booking-form {
+      background: rgba(255, 252, 249, 0.03);
+      border: 1px solid rgba(196, 165, 116, 0.25);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .form-row {
+      margin-bottom: 1.35rem;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+      color: rgba(255, 252, 249, 0.65);
+    }
+
+    .form-row input,
+    .form-row select {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 252, 249, 0.25);
+      padding: 0.75rem 0;
+      outline: none;
+      transition: border-color 0.3s;
+      border-radius: 0;
+      appearance: none;
+      color: var(--white);
+    }
+
+    .form-row select {
+      background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+        linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+      background-position: calc(100% - 12px) calc(50% + 2px), calc(100% - 7px) calc(50% + 2px);
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      padding-right: 1.5rem;
+    }
+
+    .form-row select option {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .form-row input:focus,
+    .form-row select:focus {
+      border-bottom-color: var(--gold);
+    }
+
+    .form-row input.is-invalid,
+    .form-row select.is-invalid {
+      border-bottom-color: #d97777;
+    }
+
+    .field-error {
+      display: none;
+      font-size: 0.75rem;
+      color: #d97777;
+      margin-top: 0.4rem;
+    }
+
+    .field-error.is-visible { display: block; }
+
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--gold-soft);
+      min-height: 1.4em;
+    }
+
+    .form-status.is-error { color: #d97777; }
+
+    /* Reviews — editorial pull-quote */
+    .reviews {
+      background:
+        linear-gradient(145deg, var(--burgundy-deep) 0%, #3a0e18 48%, var(--charcoal) 100%);
+      color: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .reviews::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 85% 20%, rgba(196, 165, 116, 0.12), transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 90%, rgba(232, 208, 200, 0.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .reviews__layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: end;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reviews__intro .section__label {
+      color: var(--gold);
+    }
+
+    .reviews__intro .section__title {
+      color: var(--white);
+      max-width: 10ch;
+    }
+
+    .reviews__intro .section__lead {
+      color: rgba(255, 252, 249, 0.65);
+    }
+
+    .reviews__placeholder-note {
+      display: inline-block;
+      margin-top: 1.25rem;
+      padding: 0.45rem 0.85rem;
+      border: 1px solid rgba(196, 165, 116, 0.35);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .reviews__stage {
+      position: relative;
+      min-height: clamp(18rem, 36vh, 26rem);
+    }
+
+    .reviews__mark {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 14vw, 11rem);
+      line-height: 0.7;
+      color: var(--gold);
+      opacity: 0.35;
+      position: absolute;
+      top: -0.15em;
+      left: -0.05em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .reviews__viewport {
+      position: relative;
+      z-index: 1;
+      outline: none;
+    }
+
+    .review-card {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out), visibility 0.65s;
+      pointer-events: none;
+    }
+
+    .review-card.is-active {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .review-card blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.4vw, 2.65rem);
+      line-height: 1.25;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 2rem;
+      color: var(--blush-soft);
+      max-width: 22ch;
+    }
+
+    .review-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.65rem 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(196, 165, 116, 0.28);
+    }
+
+    .review-card cite {
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .review-card__service {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--gold-soft);
+    }
+
+    .review-card__service::before {
+      content: "·";
+      margin-right: 1.25rem;
+      color: rgba(255, 252, 249, 0.35);
+    }
+
+    .reviews__controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .reviews__index {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 252, 249, 0.55);
+      min-width: 5.5rem;
+    }
+
+    .reviews__index strong {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .reviews__progress {
+      flex: 1;
+      min-width: 120px;
+      height: 1px;
+      background: rgba(255, 252, 249, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reviews__progress-bar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0;
+      background: var(--gold);
+      transition: width 0.55s var(--ease-out);
+    }
+
+    .reviews__nav {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .reviews .carousel-btn {
+      border-color: rgba(255, 252, 249, 0.3);
+      color: var(--white);
+    }
+
+    .reviews .carousel-btn:hover,
+    .reviews .carousel-btn:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(196, 165, 116, 0.08);
+    }
+
+    @media (max-width: 900px) {
+      .reviews__layout {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .reviews__stage {
+        min-height: 0;
+      }
+
+      .review-card blockquote {
+        max-width: none;
+      }
+    }
+
+    /* Social */
+    .social {
+      background: var(--ivory-deep);
+      padding-top: 0;
+    }
+
+    .social__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .social__item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .social__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-out), opacity 0.4s;
+      opacity: 0.9;
+    }
+
+    .social__item:hover img,
+    .social__item:focus-visible img {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+
+    .social__item:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 2px; }
+
+    /* Footer — cinematic editorial closing */
+    .footer {
+      --footer-pad-x: clamp(1.25rem, 5vw, 4.5rem);
+      background:
+        radial-gradient(ellipse 70% 55% at 50% -10%, rgba(107, 30, 46, 0.45), transparent 55%),
+        linear-gradient(180deg, #120e0d 0%, var(--black) 40%, #080706 100%);
+      color: rgba(255, 252, 249, 0.78);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer__edge {
+      height: 1px;
+      width: 0;
+      margin: 0 auto;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transition: width 1.4s var(--ease-out);
+    }
+
+    .footer.is-visible .footer__edge { width: min(92%, 1100px); }
+
+    .footer__inner {
+      padding: clamp(3.5rem, 9vh, 6.5rem) var(--footer-pad-x) 0;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer__wordmark {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 6vh, 4rem);
+    }
+
+    .footer__wordmark-line {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 12vw, 9.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+
+    .footer__wordmark-line--accent {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      font-size: clamp(2.2rem, 7vw, 5.5rem);
+      margin-top: 0.15em;
+    }
+
+    .footer.is-visible .footer__wordmark-line {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer.is-visible .footer__wordmark-line:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+
+    .footer__invite {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem 2rem;
+      padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+      border-top: 1px solid rgba(255, 252, 249, 0.1);
+      border-bottom: 1px solid rgba(255, 252, 249, 0.1);
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease-out) 0.25s, transform 0.8s var(--ease-out) 0.25s;
+    }
+
+    .footer.is-visible .footer__invite {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer__invite-copy {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      color: var(--blush-soft);
+      font-style: italic;
+      max-width: 18ch;
+      line-height: 1.2;
+    }
+
+    .footer__invite-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.25rem;
+      transition: border-color 0.3s, color 0.3s, gap 0.35s var(--ease-out);
+    }
+
+    .footer__invite-link:hover,
+    .footer__invite-link:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold-soft);
+      gap: 1.15rem;
+      outline: none;
+    }
+
+    .footer__invite-link svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.4;
+    }
+
+    .footer__ribbon {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: clamp(2.5rem, 5vh, 3.75rem) 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-out) 0.4s, transform 0.8s var(--ease-out) 0.4s;
+    }
+
+    .footer.is-visible .footer__ribbon {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer__cell {
+      padding: 1.5rem clamp(1rem, 2.5vw, 2rem);
+      border-left: 1px solid rgba(196, 165, 116, 0.28);
+    }
+
+    .footer__cell:first-child {
+      border-left: 0;
+      padding-left: 0;
+    }
+
+    .footer__cell:last-child { padding-right: 0; }
+
+    .footer__cell-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+
+    .footer__cell p,
+    .footer__cell a {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 252, 249, 0.8);
+      margin: 0 0 0.35rem;
+      max-width: none;
+      display: block;
+      transition: color 0.25s;
+    }
+
+    .footer__cell a:hover,
+    .footer__cell a:focus-visible {
+      color: var(--white);
+      outline: none;
+    }
+
+    .footer__nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 0;
+      padding: 0.5rem 0 1.75rem;
+      opacity: 0;
+      transition: opacity 0.8s var(--ease-out) 0.55s;
+    }
+
+    .footer.is-visible .footer__nav { opacity: 1; }
+
+    .footer__nav a {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 252, 249, 0.55);
+      padding: 0.55rem 1.1rem;
+      transition: color 0.25s;
+    }
+
+    .footer__nav a:not(:last-child)::after {
+      content: "";
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(196, 165, 116, 0.55);
+      margin-left: 1.1rem;
+    }
+
+    .footer__nav a:hover,
+    .footer__nav a:focus-visible {
+      color: var(--gold-soft);
+      outline: none;
+    }
+
+    .footer__colophon {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+      padding: 1.35rem var(--footer-pad-x);
+      border-top: 1px solid rgba(255, 252, 249, 0.08);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: rgba(255, 252, 249, 0.4);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer__colophon-mark {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .story__pin,
+      .experience__grid,
+      .booking__wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__ribbon {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .footer__cell {
+        border-left: 0;
+        border-top: 1px solid rgba(196, 165, 116, 0.22);
+        padding: 1.35rem 0;
+      }
+
+      .footer__cell:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .experience__grid {
+        min-height: 0;
+      }
+
+      .experience__copy {
+        justify-content: flex-start;
+        padding: clamp(2.25rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.5rem) clamp(2.5rem, 6vw, 3.5rem);
+      }
+
+      .story__visual img {
+        min-height: 55vh;
+      }
+
+      .experience__media img {
+        min-height: 42vh;
+        max-height: 480px;
+      }
+
+      .gallery__grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery__item:nth-child(1),
+      .gallery__item:nth-child(3) {
+        grid-row: auto;
+        min-height: 360px;
+      }
+
+      .social__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      body { cursor: auto; }
+
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        inset: var(--nav-h) 0 auto;
+        background: rgba(247, 242, 235, 0.98);
+        color: var(--text);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem clamp(1.25rem, 4vw, 2rem) 2rem;
+        gap: 1.25rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.4s var(--ease-out), opacity 0.4s;
+        box-shadow: 0 12px 30px rgba(14, 12, 11, 0.08);
+      }
+
+      .nav-links.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .scroll-indicator { display: none; }
+
+      .service-card {
+        flex: 0 0 min(88vw, 320px);
+        min-height: 460px;
+      }
+
+      .gallery__grid { grid-template-columns: 1fr; }
+
+      .gallery__item:nth-child(1),
+      .gallery__item:nth-child(2),
+      .gallery__item:nth-child(3),
+      .gallery__item:nth-child(4) {
+        min-height: 280px;
+      }
+
+      .hero { min-height: 100svh; }
+
+      .experience__media img {
+        min-height: 36vh;
+        max-height: 360px;
+      }
+
+      .experience__copy {
+        padding-bottom: 2.25rem;
+      }
+
+      .footer__invite {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer__nav {
+        justify-content: flex-start;
+      }
+
+      .footer__nav a:not(:last-child)::after {
+        display: none;
+      }
+
+      .footer__colophon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hero__media img { transform: none !important; }
+      .gallery__item,
+      .experience__media {
+        clip-path: none !important;
+      }
+
+      .hero__brand,
+      .hero__sub,
+      .hero__actions,
+      .hero__title .word > span,
+      .experience__copy h2,
+      .experience__copy p,
+      .experience__list,
+      .footer__wordmark-line,
+      .footer__invite,
+      .footer__ribbon,
+      .footer__nav {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .footer__edge { width: min(92%, 1100px) !important; }
+
+      .cursor, .cursor-ring { display: none !important; }
+      body { cursor: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a href="#top" class="logo interactive">Art Style <span>Salon</span></a>
+      <button class="nav-toggle interactive" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="primaryNav" aria-label="Primary">
+        <a href="#story" class="interactive">Story</a>
+        <a href="#services" class="interactive">Services</a>
+        <a href="#gallery" class="interactive">Gallery</a>
+        <a href="#experience" class="interactive">Experience</a>
+        <a href="#reviews" class="interactive">Reviews</a>
+        <a href="#booking" class="nav-cta interactive">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero__media" id="heroMedia">
+        <img
+          src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/1e12cb7f-fbb5-41ba-a6b4-cc293b955ec7/hero-salon.jpg"
+          alt="Stylist shaping hair in a softly lit salon"
+          width="2000"
+          height="1333"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__brand" id="heroBrand">Art Style Salon</p>
+        <h1 class="hero__title" id="heroTitle" aria-label="Your style. Your statement.">
+          <span class="word"><span>Your</span></span>
+          <span class="word"><span>Style.</span></span>
+          <span class="word"><span>Your</span></span>
+          <span class="word"><span>Statement.</span></span>
+        </h1>
+        <p class="hero__sub" id="heroSub">Hair, beauty, and personal transformation — crafted with precision in Faridabad.</p>
+        <div class="hero__actions" id="heroActions">
+          <a href="#services" class="btn btn--primary interactive">Explore Our Services</a>
+          <a href="#booking" class="btn btn--ghost interactive">Book an Appointment</a>
+        </div>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-indicator__line"></div>
+      </div>
+    </section>
+
+    <section class="story section" id="story" aria-label="Brand story">
+      <div class="story__pin" id="storyPin">
+        <div class="story__visual">
+          <div class="story__frame" aria-hidden="true"></div>
+          <img
+            src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/08fa6fe9-8b98-4c0e-b3c2-ada2fcb76fb7/story-hair.jpg"
+            alt="Close-up of styled hair with warm lighting"
+            width="1400"
+            height="1750"
+            loading="lazy"
+          />
+        </div>
+        <div class="story__copy">
+          <p class="section__label">The Art Style Edit</p>
+          <div class="story__statements" id="storyStatements">
+            <article class="story__statement is-active" data-index="0">
+              <h2>Style is a language.</h2>
+              <p>Every cut, color, and finish is composed to express who you are — not a trend you have to borrow.</p>
+            </article>
+            <article class="story__statement" data-index="1">
+              <h2>Confidence, refined.</h2>
+              <p>We shape looks that feel intentional and effortless — beauty that holds up in everyday life.</p>
+            </article>
+            <article class="story__statement" data-index="2">
+              <h2>Self-expression, elevated.</h2>
+              <p>From quiet elegance to bold statement pieces, your appointment becomes a personalized editorial moment.</p>
+            </article>
+          </div>
+          <div class="story__progress" role="tablist" aria-label="Story chapters">
+            <button class="story__dot is-active interactive" type="button" role="tab" aria-selected="true" aria-label="Chapter 1" data-story="0"></button>
+            <button class="story__dot interactive" type="button" role="tab" aria-selected="false" aria-label="Chapter 2" data-story="1"></button>
+            <button class="story__dot interactive" type="button" role="tab" aria-selected="false" aria-label="Chapter 3" data-story="2"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="type-marquee" aria-hidden="true">
+      <div class="type-marquee__track" id="marqueeTrack">
+        <div class="type-marquee__item">Hair <span>—</span> Beauty <span>—</span> Presence <span>—</span> Craft <span>—</span></div>
+        <div class="type-marquee__item">Hair <span>—</span> Beauty <span>—</span> Presence <span>—</span> Craft <span>—</span></div>
+      </div>
+    </div>
+
+    <section class="services section" id="services">
+      <div class="services__head">
+        <div>
+          <p class="section__label">Services</p>
+          <h2 class="section__title">An editorial beauty menu</h2>
+          <p class="section__lead">Image-led services for hair, makeup, and skin — tailored to your occasion and personal style.</p>
+        </div>
+        <div class="services__controls">
+          <button class="carousel-btn interactive" id="servicesPrev" type="button" aria-label="Previous services">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="carousel-btn interactive" id="servicesNext" type="button" aria-label="Next services">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="services__viewport" id="servicesViewport" tabindex="0" aria-label="Services carousel">
+        <div class="services__track" id="servicesTrack">
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/a4186fb9-a852-43ab-8ef1-603c7d10ecc7/service-haircut.jpg" alt="Haircut and styling" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Haircut &amp; Styling</h3>
+              <p class="service-card__desc">Precision cuts and finish styling shaped around your face, texture, and daily rhythm.</p>
+              <p class="service-card__more">Consultation-led shaping, blowouts, and occasion-ready finishes.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/f806a3ac-6e89-4ad3-96cb-f5c69293135e/service-color.jpg" alt="Hair coloring" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Hair Coloring</h3>
+              <p class="service-card__desc">From soft dimension to saturated statements — color designed to flatter your tone.</p>
+              <p class="service-card__more">Highlights, global color, glossing, and tone refinement.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/4cdeb246-1f66-433d-8de8-9d4b747f1b78/service-spa.jpg" alt="Hair spa treatment" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Hair Spa &amp; Treatments</h3>
+              <p class="service-card__desc">Restorative rituals for softness, strength, and healthy shine.</p>
+              <p class="service-card__more">Deep conditioning, repair-focused treatments, and scalp care.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/c8b99523-a340-4f2e-8db1-b1fc3c8f7629/service-bridal.jpg" alt="Bridal makeup" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Bridal Makeup</h3>
+              <p class="service-card__desc">Wedding-day beauty composed for longevity, light, and your personal aesthetic.</p>
+              <p class="service-card__more">Trials available — discuss timing and look direction when booking.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/5456f013-33d8-4a8c-b465-cc7a575ba431/service-party.jpg" alt="Party makeup" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Party Makeup</h3>
+              <p class="service-card__desc">Evening looks with polished skin, defined eyes, and occasion-ready finish.</p>
+              <p class="service-card__more">Soft glam to high-impact — styled to your outfit and lighting.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__accent" aria-hidden="true"></div>
+            <div class="service-card__media">
+              <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/0c1f2966-43ed-4094-bd3a-26e4fa85d511/service-skin.jpg" alt="Skin and beauty services" width="900" height="1200" loading="lazy" draggable="false" />
+              <div class="service-card__shade"></div>
+            </div>
+            <div class="service-card__body">
+              <h3>Skin &amp; Beauty</h3>
+              <p class="service-card__desc">Facial and beauty services that prepare skin for glow and calm clarity.</p>
+              <p class="service-card__more">Ask the team for the current facial and grooming menu.</p>
+              <a href="#booking" class="service-card__link interactive">Discover Service →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section" id="gallery">
+      <p class="section__label">Gallery</p>
+      <h2 class="section__title">Looks in frame</h2>
+      <p class="section__lead">An immersive study in texture, light, and finish — photographic inspiration for your next appointment.</p>
+
+      <div class="gallery__grid" id="galleryGrid">
+        <figure class="gallery__item" tabindex="0">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/d22ec7bb-4e5e-45d3-a916-0a4bd7f240cc/gallery-1.jpg" alt="Editorial hairstyle portrait" width="1200" height="1600" loading="lazy" />
+          <figcaption class="gallery__caption">Sculpted silhouette</figcaption>
+        </figure>
+        <figure class="gallery__item" tabindex="0">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/0d76603d-78b7-4d6b-9032-bd9249bae23c/gallery-2.jpg" alt="Soft wave hairstyle" width="900" height="700" loading="lazy" />
+          <figcaption class="gallery__caption">Soft movement</figcaption>
+        </figure>
+        <figure class="gallery__item" tabindex="0">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/a05c357e-35bf-4a2e-86f0-5e5c15244495/gallery-3.jpg" alt="Makeup beauty close-up" width="1100" height="1500" loading="lazy" />
+          <figcaption class="gallery__caption">Luminous skin</figcaption>
+        </figure>
+        <figure class="gallery__item" tabindex="0">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/502f30c2-693e-4b70-b5d5-48edca298db7/gallery-4.jpg" alt="Salon styling tools and atmosphere" width="900" height="700" loading="lazy" />
+          <figcaption class="gallery__caption">Studio craft</figcaption>
+        </figure>
+      </div>
+
+      <div class="gallery__cta">
+        <a href="#booking" class="btn btn--outline-dark interactive">Discover Your Look</a>
+      </div>
+    </section>
+
+    <section class="experience" id="experience" aria-label="The Art Style Experience">
+      <div class="experience__grid">
+        <div class="experience__media" id="experienceMedia">
+          <img
+            src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/78e804b4-3584-49f8-98de-bbe052acbeef/experience.jpg"
+            alt="Stylist working with focused attention"
+            width="1400"
+            height="1800"
+            loading="lazy"
+          />
+        </div>
+        <div class="experience__copy" id="experienceCopy">
+          <p class="section__label">The Experience</p>
+          <h2>Craftsmanship, personalized.</h2>
+          <p>Every appointment begins with listening — how you wear your hair, how you want to feel, and what the occasion asks for.</p>
+          <p>From the first consultation to the final finish, we refine details with care: balance, texture, color harmony, and longevity.</p>
+          <ol class="experience__list">
+            <li><span>01</span> Personal consultation and look direction</li>
+            <li><span>02</span> Precise cutting, coloring, or makeup artistry</li>
+            <li><span>03</span> Finishing touches and take-home guidance</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking section" id="booking">
+      <div class="booking__wrap">
+        <div>
+          <p class="section__label">Appointments</p>
+          <h2 class="section__title" style="color: var(--white);">Reserve your time</h2>
+          <p class="section__lead">Share a few details and we’ll follow up to confirm availability. This form prepares your request — it does not complete a booking until we respond.</p>
+          <div class="booking__contact">
+            <div>
+              <strong>Phone</strong>
+              <span><!-- EDIT: verify phone -->+91 XXXXX XXXXX</span>
+            </div>
+            <div>
+              <strong>Location</strong>
+              <span><!-- EDIT: verify address -->Faridabad, Haryana</span>
+            </div>
+            <div>
+              <strong>Hours</strong>
+              <span><!-- EDIT: verify hours -->Mon–Sun · Hours to confirm</span>
+            </div>
+          </div>
+          <p class="booking__note">Contact details, hours, and pricing are placeholders until verified with the salon.</p>
+        </div>
+
+        <form class="booking-form" id="bookingForm" novalidate>
+          <div class="form-row">
+            <label for="guestName">Name</label>
+            <input class="interactive" type="text" id="guestName" name="name" autocomplete="name" required />
+            <p class="field-error" id="nameError" role="alert">Please enter your name.</p>
+          </div>
+          <div class="form-row">
+            <label for="guestPhone">Phone number</label>
+            <input class="interactive" type="tel" id="guestPhone" name="phone" autocomplete="tel" inputmode="tel" required />
+            <p class="field-error" id="phoneError" role="alert">Please enter a valid phone number.</p>
+          </div>
+          <div class="form-row">
+            <label for="guestService">Preferred service</label>
+            <select class="interactive" id="guestService" name="service" required>
+              <option value="">Select a service</option>
+              <option>Haircut &amp; Styling</option>
+              <option>Hair Coloring</option>
+              <option>Hair Spa &amp; Treatments</option>
+              <option>Bridal Makeup</option>
+              <option>Party Makeup</option>
+              <option>Skin &amp; Beauty</option>
+            </select>
+            <p class="field-error" id="serviceError" role="alert">Please choose a service.</p>
+          </div>
+          <div class="form-row">
+            <label for="guestDate">Preferred date</label>
+            <input class="interactive" type="date" id="guestDate" name="date" required />
+            <p class="field-error" id="dateError" role="alert">Please select a preferred date.</p>
+          </div>
+          <button type="submit" class="btn btn--gold interactive" style="width: 100%; margin-top: 0.5rem;">Request Appointment</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="reviews section" id="reviews">
+      <div class="reviews__layout">
+        <div class="reviews__intro">
+          <p class="section__label">Client Notes</p>
+          <h2 class="section__title">Voices of style</h2>
+          <p class="section__lead">Words from guests of Art Style Salon — update with verified reviews when ready.</p>
+        </div>
+
+        <div class="reviews__stage">
+          <div class="reviews__mark" aria-hidden="true">“</div>
+          <div
+            class="reviews__viewport"
+            id="reviewsViewport"
+            tabindex="0"
+            aria-roledescription="carousel"
+            aria-label="Client testimonials"
+          >
+            <div id="reviewsTrack">
+              <article class="review-card is-active" aria-hidden="false" data-review="0">
+                <blockquote>The team listened carefully and created a look that felt completely me — polished, personal, and easy to wear.</blockquote>
+                <div class="review-card__meta">
+                  <cite>Ananya M.</cite>
+                  <span class="review-card__service">Haircut &amp; Styling · Faridabad</span>
+                </div>
+              </article>
+              <article class="review-card" aria-hidden="true" data-review="1">
+                <blockquote>Soft color, a precise cut, and a calm appointment from the first consultation to the final finish.</blockquote>
+                <div class="review-card__meta">
+                  <cite>Riya S.</cite>
+                  <span class="review-card__service">Hair Coloring · Faridabad</span>
+                </div>
+              </article>
+              <article class="review-card" aria-hidden="true" data-review="2">
+                <blockquote>Makeup that photographed beautifully and still felt like my own skin — elegant for the evening, never heavy.</blockquote>
+                <div class="review-card__meta">
+                  <cite>Meher K.</cite>
+                  <span class="review-card__service">Party Makeup · Faridabad</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="reviews__controls">
+            <p class="reviews__index" id="reviewsIndex" aria-live="polite"><strong>01</strong> / 03</p>
+            <div class="reviews__progress" aria-hidden="true">
+              <div class="reviews__progress-bar" id="reviewsProgress"></div>
+            </div>
+            <div class="reviews__nav">
+              <button class="carousel-btn interactive" id="reviewsPrev" type="button" aria-label="Previous review">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+              </button>
+              <button class="carousel-btn interactive" id="reviewsNext" type="button" aria-label="Next review">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social section" aria-label="Social gallery">
+      <p class="section__label">Instagram</p>
+      <h2 class="section__title" style="max-width: 18ch;">Follow the atelier</h2>
+      <p class="section__lead">Link these tiles to the salon’s verified Instagram once confirmed. Images below are atmospheric placeholders.</p>
+      <div class="social__grid">
+        <a class="social__item interactive" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder 1">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/bc145a03-8a3c-4da6-a2a8-831bbb601177/social-1.jpg" alt="" width="600" height="600" loading="lazy" />
+        </a>
+        <a class="social__item interactive" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder 2">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/28d89c9a-c948-48b4-9c40-1185f18f093f/social-2.jpg" alt="" width="600" height="600" loading="lazy" />
+        </a>
+        <a class="social__item interactive" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder 3">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/a50e5290-a35b-483d-bb62-3f2c5c381978/social-3.jpg" alt="" width="600" height="600" loading="lazy" />
+        </a>
+        <a class="social__item interactive" href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram placeholder 4">
+          <img src="https://cdn.storebox.ai/media/273adb0f-d045-4f2b-ba2e-e085eecdc84a/54c97c55-de0a-437f-816c-ecde211ebacb/social-4.jpg" alt="" width="600" height="600" loading="lazy" />
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="siteFooter">
+    <div class="footer__edge" aria-hidden="true"></div>
+    <div class="footer__inner">
+      <p class="footer__wordmark" aria-label="Art Style Salon">
+        <span class="footer__wordmark-line">Art Style</span>
+        <span class="footer__wordmark-line footer__wordmark-line--accent">Salon</span>
+      </p>
+
+      <div class="footer__invite">
+        <p class="footer__invite-copy">Your next look begins with a conversation.</p>
+        <a href="#booking" class="footer__invite-link interactive">
+          Book an appointment
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="footer__ribbon">
+        <div class="footer__cell">
+          <span class="footer__cell-label">Visit</span>
+          <p>Faridabad, Haryana</p>
+          <p><!-- EDIT: verify address -->Full address pending verification</p>
+        </div>
+        <div class="footer__cell">
+          <span class="footer__cell-label">Hours</span>
+          <p><!-- EDIT: verify hours -->Mon–Sun</p>
+          <p>Hours to confirm</p>
+        </div>
+        <div class="footer__cell">
+          <span class="footer__cell-label">Connect</span>
+          <a href="tel:+910000000000" class="interactive"><!-- EDIT -->+91 XXXXX XXXXX</a>
+          <a href="mailto:hello@artstylesalon.example" class="interactive"><!-- EDIT -->hello@artstylesalon.example</a>
+          <a href="https://instagram.com/" class="interactive" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#story" class="interactive">Story</a>
+        <a href="#services" class="interactive">Services</a>
+        <a href="#gallery" class="interactive">Gallery</a>
+        <a href="#experience" class="interactive">Experience</a>
+        <a href="#reviews" class="interactive">Reviews</a>
+        <a href="#booking" class="interactive">Booking</a>
+      </nav>
+    </div>
+
+    <div class="footer__colophon">
+      <p>© <span id="year"></span> Art Style Salon</p>
+      <p class="footer__colophon-mark">Faridabad</p>
+      <p>An editorial beauty experience</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/gsap.min.js"></script>
+  <script src="assets/js/ScrollTrigger.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+      if (isTouch) document.body.classList.add("is-touch");
+
+      document.getElementById("year").textContent = String(new Date().getFullYear());
+
+      /* ---------- Custom cursor ---------- */
+      function initCursor() {
+        if (isTouch || reduceMotion) return;
+        const dot = document.querySelector(".cursor");
+        const ring = document.querySelector(".cursor-ring");
+        let x = 0, y = 0, rx = 0, ry = 0;
+        let raf = 0;
+
+        window.addEventListener("mousemove", (e) => {
+          x = e.clientX;
+          y = e.clientY;
+          dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        });
+
+        function loop() {
+          rx += (x - rx) * 0.18;
+          ry += (y - ry) * 0.18;
+          ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+          raf = requestAnimationFrame(loop);
+        }
+        raf = requestAnimationFrame(loop);
+
+        document.querySelectorAll("a, button, .interactive, input, select, .gallery__item, .service-card").forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            dot.classList.add("is-hover");
+            ring.classList.add("is-hover");
+          });
+          el.addEventListener("mouseleave", () => {
+            dot.classList.remove("is-hover");
+            ring.classList.remove("is-hover");
+          });
+        });
+      }
+
+      /* ---------- Header & nav ---------- */
+      function initNav() {
+        const header = document.getElementById("siteHeader");
+        const toggle = document.getElementById("navToggle");
+        const nav = document.getElementById("primaryNav");
+
+        const onScroll = () => {
+          header.classList.toggle("is-scrolled", window.scrollY > 40);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        toggle.addEventListener("click", () => {
+          const open = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!open));
+          nav.classList.toggle("is-open", !open);
+          toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+        });
+
+        nav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            toggle.setAttribute("aria-expanded", "false");
+            nav.classList.remove("is-open");
+            toggle.setAttribute("aria-label", "Open menu");
+          });
+        });
+      }
+
+      /* ---------- Hero entrance ---------- */
+      function initHero() {
+        const brand = document.getElementById("heroBrand");
+        const sub = document.getElementById("heroSub");
+        const actions = document.getElementById("heroActions");
+        const words = document.querySelectorAll("#heroTitle .word > span");
+        const img = document.querySelector("#heroMedia img");
+
+        if (reduceMotion || typeof gsap === "undefined") {
+          brand.style.opacity = "1";
+          brand.style.transform = "none";
+          sub.style.opacity = "1";
+          sub.style.transform = "none";
+          actions.style.opacity = "1";
+          actions.style.transform = "none";
+          words.forEach((w) => { w.style.transform = "none"; });
+          if (img) img.style.transform = "none";
+          return;
+        }
+
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.to(img, { scale: 1, duration: 2.4, ease: "power2.out" }, 0)
+          .to(brand, { opacity: 1, y: 0, duration: 0.9 }, 0.35)
+          .to(words, { y: 0, duration: 1, stagger: 0.12 }, 0.45)
+          .to(sub, { opacity: 1, y: 0, duration: 0.9 }, 0.95)
+          .to(actions, { opacity: 1, y: 0, duration: 0.9 }, 1.1);
+      }
+
+      /* ---------- Scroll animations (GSAP) ---------- */
+      function initScrollStory() {
+        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (reduceMotion) {
+          document.querySelectorAll(".gallery__item, .experience__media, .experience__copy, .footer").forEach((el) => {
+            el.classList.add("is-revealed", "is-visible");
+          });
+          return;
+        }
+
+        // Hero → framed editorial
+        const heroMedia = document.getElementById("heroMedia");
+        const heroContent = document.querySelector(".hero__content");
+        const hero = document.getElementById("hero");
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          }
+        })
+          .to(heroMedia, {
+            scale: 0.86,
+            borderRadius: 0,
+            clipPath: "inset(6% 8% 8% 8%)",
+            ease: "none",
+          }, 0)
+          .to(heroContent, {
+            y: -80,
+            opacity: 0.15,
+            ease: "none",
+          }, 0);
+
+        // Pinned brand story — desktop only
+        const canPin = window.matchMedia("(min-width: 1025px)").matches;
+        const statements = Array.from(document.querySelectorAll(".story__statement"));
+        const dots = Array.from(document.querySelectorAll(".story__dot"));
+
+        function setStory(index) {
+          statements.forEach((s, i) => s.classList.toggle("is-active", i === index));
+          dots.forEach((d, i) => {
+            d.classList.toggle("is-active", i === index);
+            d.setAttribute("aria-selected", String(i === index));
+          });
+        }
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => setStory(Number(dot.dataset.story)));
+        });
+
+        if (canPin) {
+          ScrollTrigger.create({
+            trigger: "#storyPin",
+            start: "top top",
+            end: "+=180%",
+            pin: true,
+            scrub: true,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              const idx = Math.min(statements.length - 1, Math.floor(self.progress * statements.length));
+              setStory(idx);
+            },
+          });
+        } else {
+          // Mobile: gentle fade-in, no pin trap
+          statements.forEach((s, i) => {
+            if (i === 0) return;
+            gsap.from(s, {
+              opacity: 0,
+              y: 30,
+              scrollTrigger: {
+                trigger: s,
+                start: "top 85%",
+                toggleActions: "play none none reverse",
+              },
+            });
+            s.style.position = "relative";
+            s.style.opacity = "1";
+            s.style.visibility = "visible";
+            s.style.transform = "none";
+          });
+        }
+
+        // Horizontal type marquee driven by scroll
+        gsap.to("#marqueeTrack", {
+          xPercent: -35,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".type-marquee",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        // Gallery mask reveals
+        document.querySelectorAll(".gallery__item").forEach((item, i) => {
+          ScrollTrigger.create({
+            trigger: item,
+            start: "top 88%",
+            onEnter: () => {
+              setTimeout(() => item.classList.add("is-revealed"), i * 90);
+            },
+            once: true,
+          });
+        });
+
+        // Experience reveal
+        ScrollTrigger.create({
+          trigger: "#experience",
+          start: "top 70%",
+          onEnter: () => {
+            document.getElementById("experienceMedia").classList.add("is-revealed");
+            document.getElementById("experienceCopy").classList.add("is-revealed");
+          },
+          once: true,
+        });
+
+        // Parallax on experience image
+        gsap.to("#experienceMedia img", {
+          yPercent: 12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#experience",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        // Footer reveal
+        ScrollTrigger.create({
+          trigger: "#siteFooter",
+          start: "top 90%",
+          onEnter: () => document.getElementById("siteFooter").classList.add("is-visible"),
+          once: true,
+        });
+      }
+
+      /* ---------- Services carousel ---------- */
+      function initServicesCarousel() {
+        const viewport = document.getElementById("servicesViewport");
+        const track = document.getElementById("servicesTrack");
+        const prev = document.getElementById("servicesPrev");
+        const next = document.getElementById("servicesNext");
+        let index = 0;
+        let startX = 0;
+        let currentX = 0;
+        let dragging = false;
+        let dragOffset = 0;
+
+        function cardStep() {
+          const card = track.querySelector(".service-card");
+          if (!card) return 380;
+          const styles = getComputedStyle(track);
+          const gap = parseFloat(styles.gap) || 24;
+          return card.getBoundingClientRect().width + gap;
+        }
+
+        function maxIndex() {
+          const visible = Math.max(1, Math.floor(viewport.clientWidth / cardStep()));
+          return Math.max(0, track.children.length - visible);
+        }
+
+        function render(animate) {
+          const x = -index * cardStep() + dragOffset;
+          track.style.transition = animate ? "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)" : "none";
+          track.style.transform = `translate3d(${x}px, 0, 0)`;
+          prev.disabled = index <= 0 && dragOffset === 0;
+          next.disabled = index >= maxIndex() && dragOffset === 0;
+        }
+
+        function go(dir) {
+          index = Math.max(0, Math.min(maxIndex(), index + dir));
+          dragOffset = 0;
+          render(true);
+        }
+
+        prev.addEventListener("click", () => go(-1));
+        next.addEventListener("click", () => go(1));
+
+        viewport.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); go(1); }
+        });
+
+        function onPointerDown(clientX) {
+          dragging = true;
+          startX = clientX;
+          currentX = clientX;
+          viewport.classList.add("is-dragging");
+          track.style.transition = "none";
+        }
+
+        function onPointerMove(clientX) {
+          if (!dragging) return;
+          currentX = clientX;
+          dragOffset = currentX - startX;
+          render(false);
+        }
+
+        function onPointerUp() {
+          if (!dragging) return;
+          dragging = false;
+          viewport.classList.remove("is-dragging");
+          const threshold = cardStep() * 0.2;
+          if (dragOffset < -threshold) index = Math.min(maxIndex(), index + 1);
+          else if (dragOffset > threshold) index = Math.max(0, index - 1);
+          dragOffset = 0;
+          render(true);
+        }
+
+        viewport.addEventListener("pointerdown", (e) => {
+          if (e.pointerType === "mouse" && e.button !== 0) return;
+          onPointerDown(e.clientX);
+          viewport.setPointerCapture(e.pointerId);
+        });
+        viewport.addEventListener("pointermove", (e) => onPointerMove(e.clientX));
+        viewport.addEventListener("pointerup", onPointerUp);
+        viewport.addEventListener("pointercancel", onPointerUp);
+
+        window.addEventListener("resize", () => {
+          index = Math.min(index, maxIndex());
+          render(false);
+        });
+
+        render(false);
+      }
+
+      /* ---------- Reviews carousel ---------- */
+      function initReviews() {
+        const track = document.getElementById("reviewsTrack");
+        const cards = Array.from(track.children);
+        const prev = document.getElementById("reviewsPrev");
+        const next = document.getElementById("reviewsNext");
+        const indexEl = document.getElementById("reviewsIndex");
+        const progress = document.getElementById("reviewsProgress");
+        const viewport = document.getElementById("reviewsViewport");
+        const total = cards.length;
+        let index = 0;
+        let timer;
+
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+
+        function goTo(i) {
+          index = (i + total) % total;
+          cards.forEach((card, n) => {
+            const active = n === index;
+            card.classList.toggle("is-active", active);
+            card.setAttribute("aria-hidden", String(!active));
+          });
+          indexEl.innerHTML = `<strong>${pad(index + 1)}</strong> / ${pad(total)}`;
+          progress.style.width = `${((index + 1) / total) * 100}%`;
+          restart();
+        }
+
+        function restart() {
+          clearInterval(timer);
+          if (reduceMotion) return;
+          timer = setInterval(() => goTo(index + 1), 7000);
+        }
+
+        prev.addEventListener("click", () => goTo(index - 1));
+        next.addEventListener("click", () => goTo(index + 1));
+
+        viewport.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") { e.preventDefault(); goTo(index - 1); }
+          if (e.key === "ArrowRight") { e.preventDefault(); goTo(index + 1); }
+        });
+
+        let touchStartX = 0;
+        viewport.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+        viewport.addEventListener("touchend", (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+        }, { passive: true });
+
+        goTo(0);
+      }
+
+      /* ---------- Booking form ---------- */
+      function initBooking() {
+        const form = document.getElementById("bookingForm");
+        const status = document.getElementById("formStatus");
+        const dateInput = document.getElementById("guestDate");
+        const today = new Date();
+        const iso = today.toISOString().split("T")[0];
+        dateInput.min = iso;
+
+        function setError(input, errorEl, show) {
+          input.classList.toggle("is-invalid", show);
+          errorEl.classList.toggle("is-visible", show);
+        }
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          status.textContent = "";
+          status.classList.remove("is-error");
+
+          const name = document.getElementById("guestName");
+          const phone = document.getElementById("guestPhone");
+          const service = document.getElementById("guestService");
+          const date = document.getElementById("guestDate");
+
+          const nameOk = name.value.trim().length >= 2;
+          const phoneOk = /^[+\d][\d\s\-()]{7,}$/.test(phone.value.trim());
+          const serviceOk = service.value !== "";
+          const dateOk = date.value !== "";
+
+          setError(name, document.getElementById("nameError"), !nameOk);
+          setError(phone, document.getElementById("phoneError"), !phoneOk);
+          setError(service, document.getElementById("serviceError"), !serviceOk);
+          setError(date, document.getElementById("dateError"), !dateOk);
+
+          if (!nameOk || !phoneOk || !serviceOk || !dateOk) {
+            status.textContent = "Please correct the highlighted fields.";
+            status.classList.add("is-error");
+            return;
+          }
+
+          status.textContent = "Your request is ready, but booking is not connected yet. Please call or message the salon using the contact details above to confirm your appointment.";
+        });
+      }
+
+      /* ---------- Boot ---------- */
+      function boot() {
+        initCursor();
+        initNav();
+        initHero();
+        initScrollStory();
+        initServicesCarousel();
+        initReviews();
+        initBooking();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+      } else {
+        boot();
+      }
+    })();
+  </script>
+</body>
+</html>
